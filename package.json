@@ -1,0 +1,40 @@
+{
+  "name": "cortex-plugin-swarm",
+  "version": "1.0.0",
+  "description": "Multi-Agent Swarm Orchestrator for CortexPrism",
+  "type": "module",
+  "main": "mod.ts",
+  "scripts": {
+    "dev": "node --watch mod.ts",
+    "test": "node --test test/**/*.test.js",
+    "fmt": "prettier --write .",
+    "fmt:check": "prettier --check .",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "cortex",
+    "plugin",
+    "cortex-plugin",
+    "swarm",
+    "multi-agent",
+    "orchestrator",
+    "esm"
+  ],
+  "author": "CortexPrism",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CortexPrism/cortex-plugin-swarm.git"
+  },
+  "dependencies": {
+    "@cortexprism/plugin-sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

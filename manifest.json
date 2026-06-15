@@ -1,0 +1,152 @@
+{
+  "name": "cortex-plugin-swarm",
+  "version": "1.0.0",
+  "description": "Multi-Agent Swarm Orchestrator — coordinates swarms of sub-agents with role specialization (architect, coder, reviewer, tester)",
+  "kind": "esm",
+  "entryPoint": "mod.ts",
+  "runtime": "deno",
+  "author": "CortexPrism",
+  "license": "MIT",
+  "repository": "https://github.com/CortexPrism/cortex-plugin-swarm",
+  "capabilities": [
+    "tools",
+    "shell:run",
+    "fs:read"
+  ],
+  "tools": [
+    {
+      "name": "swarm_create",
+      "description": "Create a swarm of specialist sub-agents for a task",
+      "params": [
+        {
+          "name": "task",
+          "type": "string",
+          "description": "The main task description for the swarm",
+          "required": true
+        },
+        {
+          "name": "roles",
+          "type": "string",
+          "description": "Comma-separated list of roles (e.g. architect,coder,reviewer,tester)",
+          "required": true
+        },
+        {
+          "name": "max_agents",
+          "type": "number",
+          "description": "Maximum number of agents in the swarm",
+          "required": false
+        },
+        {
+          "name": "policy",
+          "type": "string",
+          "description": "Custom AGENT.md policy content for the swarm agents",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "swarm_delegate",
+      "description": "Delegate a sub-task to a specific agent in the swarm",
+      "params": [
+        {
+          "name": "swarm_id",
+          "type": "string",
+          "description": "The swarm ID to delegate to",
+          "required": true
+        },
+        {
+          "name": "agent_role",
+          "type": "string",
+          "description": "The role of the agent to delegate to (e.g. architect, coder)",
+          "required": true
+        },
+        {
+          "name": "sub_task",
+          "type": "string",
+          "description": "The sub-task to delegate",
+          "required": true
+        },
+        {
+          "name": "context",
+          "type": "string",
+          "description": "Additional context for the sub-task",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "swarm_coordinate",
+      "description": "Coordinate results from all agents and synthesize a final answer",
+      "params": [
+        {
+          "name": "swarm_id",
+          "type": "string",
+          "description": "The swarm ID to coordinate",
+          "required": true
+        },
+        {
+          "name": "merge_strategy",
+          "type": "string",
+          "description": "Strategy for merging agent results: consensus, best, or sequential",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "swarm_status",
+      "description": "Check the status of a running swarm",
+      "params": [
+        {
+          "name": "swarm_id",
+          "type": "string",
+          "description": "The swarm ID to check",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "swarm_terminate",
+      "description": "Terminate a swarm and clean up resources",
+      "params": [
+        {
+          "name": "swarm_id",
+          "type": "string",
+          "description": "The swarm ID to terminate",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "section": "General",
+      "fields": [
+        {
+          "key": "defaultMaxAgents",
+          "label": "Default Max Agents",
+          "type": "number",
+          "default": 4
+        },
+        {
+          "key": "defaultMergeStrategy",
+          "label": "Default Merge Strategy",
+          "type": "select",
+          "default": "best",
+          "options": [
+            { "label": "Consensus", "value": "consensus" },
+            { "label": "Best Result", "value": "best" },
+            { "label": "Sequential", "value": "sequential" }
+          ]
+        }
+      ]
+    }
+  ],
+  "dependencies": {},
+  "peerDependencies": {
+    "cortex": ">=1.0.0"
+  },
+  "aiDisclosure": {
+    "tools": ["Claude Code (Anthropic) — scaffold and implementation"],
+    "humanReview": true
+  }
+}
