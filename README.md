@@ -1,6 +1,8 @@
 # Cortex Plugin Swarm
 
-Multi-Agent Swarm Orchestrator — Coordinates swarms of sub-agents with role specialization (architect, coder, reviewer, tester). Each sub-agent gets scoped tools and a dedicated AGENT.md policy.
+Multi-Agent Swarm Orchestrator — Coordinates swarms of sub-agents with role specialization
+(architect, coder, reviewer, tester). Each sub-agent gets scoped tools and a dedicated AGENT.md
+policy.
 
 ## Installation
 
@@ -21,8 +23,8 @@ cortex tools list
 
 ## Capabilities
 
-| Capability   | Type     | Description                                    |
-|-------------|----------|------------------------------------------------|
+| Capability  | Type     | Description                                    |
+| ----------- | -------- | ---------------------------------------------- |
 | `tools`     | required | Core tool registration                         |
 | `shell:run` | optional | Shell execution for agent task automation      |
 | `fs:read`   | optional | Filesystem access for reading policy documents |
@@ -34,12 +36,15 @@ cortex tools list
 Create a swarm of specialist sub-agents for a task.
 
 **Parameters:**
+
 - `task` (string, required) — The main task description for the swarm
-- `roles` (string, required) — Comma-separated list of roles (e.g. `architect,coder,reviewer,tester`)
+- `roles` (string, required) — Comma-separated list of roles (e.g.
+  `architect,coder,reviewer,tester`)
 - `max_agents` (number, optional) — Maximum number of agents in the swarm (default: 4)
 - `policy` (string, optional) — Custom AGENT.md policy content for the swarm agents
 
 **Example:**
+
 ```bash
 cortex tool call swarm_create \
   --task "Build a REST API for user management" \
@@ -54,12 +59,14 @@ cortex tool call swarm_create \
 Delegate a sub-task to a specific agent in the swarm.
 
 **Parameters:**
+
 - `swarm_id` (string, required) — The swarm ID to delegate to
 - `agent_role` (string, required) — The role of the agent (e.g. `architect`, `coder`)
 - `sub_task` (string, required) — The sub-task to delegate
 - `context` (string, optional) — Additional context for the sub-task
 
 **Example:**
+
 ```bash
 cortex tool call swarm_delegate \
   --swarm_id "swarm-1-1718400000000" \
@@ -75,10 +82,13 @@ cortex tool call swarm_delegate \
 Coordinate results from all agents and synthesize a final answer.
 
 **Parameters:**
+
 - `swarm_id` (string, required) — The swarm ID to coordinate
-- `merge_strategy` (string, optional) — Strategy for merging results: `consensus`, `best`, `sequential` (default: `best`)
+- `merge_strategy` (string, optional) — Strategy for merging results: `consensus`, `best`,
+  `sequential` (default: `best`)
 
 **Example:**
+
 ```bash
 cortex tool call swarm_coordinate \
   --swarm_id "swarm-1-1718400000000" \
@@ -92,9 +102,11 @@ cortex tool call swarm_coordinate \
 Check the status of a running swarm.
 
 **Parameters:**
+
 - `swarm_id` (string, required) — The swarm ID to check
 
 **Example:**
+
 ```bash
 cortex tool call swarm_status --swarm_id "swarm-1-1718400000000"
 ```
@@ -106,9 +118,11 @@ cortex tool call swarm_status --swarm_id "swarm-1-1718400000000"
 Terminate a swarm and clean up resources.
 
 **Parameters:**
+
 - `swarm_id` (string, required) — The swarm ID to terminate
 
 **Example:**
+
 ```bash
 cortex tool call swarm_terminate --swarm_id "swarm-1-1718400000000"
 ```
@@ -133,10 +147,10 @@ Configure in `~/.cortex/config.json`:
 
 ### Settings
 
-| Setting               | Type   | Default    | Description                                     |
-|-----------------------|--------|------------|-------------------------------------------------|
-| `defaultMaxAgents`    | number | 4          | Default maximum agents per swarm (1-20)         |
-| `defaultMergeStrategy`| select | `best`     | Default merge strategy for swarm coordination   |
+| Setting                | Type   | Default | Description                                   |
+| ---------------------- | ------ | ------- | --------------------------------------------- |
+| `defaultMaxAgents`     | number | 4       | Default maximum agents per swarm (1-20)       |
+| `defaultMergeStrategy` | select | `best`  | Default merge strategy for swarm coordination |
 
 ## Usage Examples
 

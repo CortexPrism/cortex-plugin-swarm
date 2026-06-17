@@ -1,6 +1,6 @@
 {
   "name": "cortex-plugin-swarm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Multi-Agent Swarm Orchestrator — coordinates swarms of sub-agents with role specialization (architect, coder, reviewer, tester)",
   "kind": "esm",
   "entryPoint": "mod.ts",
