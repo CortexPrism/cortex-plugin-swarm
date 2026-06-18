@@ -615,14 +615,14 @@ export async function onLoad(ctx: PluginContext): Promise<void> {
     mergeStrategyConfig = rawMergeStrategy;
   }
 
-  console.log(
+  ctx.logger.info(
     `[cortex-plugin-swarm] Loaded (maxAgents=${maxAgentsConfig}, mergeStrategy=${mergeStrategyConfig})`,
   );
 }
 
-export async function onUnload(_ctx: PluginContext): Promise<void> {
+export async function onUnload(ctx: PluginContext): Promise<void> {
   swarms.clear();
-  console.log('[cortex-plugin-swarm] Unloaded, all swarms cleaned up');
+  ctx.logger.info('[cortex-plugin-swarm] Unloaded, all swarms cleaned up');
 }
 
 export const tools: Tool[] = [

@@ -1,7 +1,7 @@
 {
   "name": "cortex-plugin-swarm",
-  "version": "1.0.1",
-  "description": "Multi-Agent Swarm Orchestrator — coordinates swarms of sub-agents with role specialization (architect, coder, reviewer, tester)",
+  "version": "1.0.2",
+  "description": "Multi-Agent Swarm Orchestrator \u2014 coordinates swarms of sub-agents with role specialization (architect, coder, reviewer, tester)",
   "kind": "esm",
   "entryPoint": "mod.ts",
   "runtime": "deno",
@@ -117,36 +117,50 @@
       ]
     }
   ],
-  "settings": [
-    {
-      "section": "General",
-      "fields": [
-        {
-          "key": "defaultMaxAgents",
-          "label": "Default Max Agents",
-          "type": "number",
-          "default": 4
-        },
-        {
-          "key": "defaultMergeStrategy",
-          "label": "Default Merge Strategy",
-          "type": "select",
-          "default": "best",
-          "options": [
-            { "label": "Consensus", "value": "consensus" },
-            { "label": "Best Result", "value": "best" },
-            { "label": "Sequential", "value": "sequential" }
-          ]
-        }
-      ]
-    }
-  ],
   "dependencies": {},
   "peerDependencies": {
     "cortex": ">=1.0.0"
   },
   "aiDisclosure": {
-    "tools": ["Claude Code (Anthropic) — scaffold and implementation"],
+    "tools": [
+      "Claude Code (Anthropic) \u2014 scaffold and implementation"
+    ],
     "humanReview": true
+  },
+  "homepage": "https://github.com/CortexPrism/cortex-plugin-swarm",
+  "ui": {
+    "settings": [
+      {
+        "section": "General",
+        "fields": [
+          {
+            "key": "defaultMaxAgents",
+            "label": "Default Max Agents",
+            "type": "number",
+            "default": 4
+          },
+          {
+            "key": "defaultMergeStrategy",
+            "label": "Default Merge Strategy",
+            "type": "select",
+            "default": "best",
+            "enum": [
+              {
+                "label": "Consensus",
+                "value": "consensus"
+              },
+              {
+                "label": "Best Result",
+                "value": "best"
+              },
+              {
+                "label": "Sequential",
+                "value": "sequential"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

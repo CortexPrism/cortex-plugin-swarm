@@ -1,10 +1,24 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+## [Unreleased]
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project
-adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+### Added
+- Unit test suite for all tools
 
+### Changed
+- Renamed manifest file from `cortex.json` to `manifest.json` for consistency with Cortex standard
+- Standardized UI section structure to `ui.settings` format
+- Normalized parameter naming: `defaultValue` → `default`, `options` → `enum`
+- Added `homepage` field with repository URL
+- Added `dependencies` field to manifest
+
+### Fixed
+- Replaced `console.log` with `ctx.logger.info()` in lifecycle hooks
+
+## [1.0.1] — 2026-06-15
+
+### Added
+- Initial release
 ## [1.0.1] — 2026-06-17
 
 ## [1.0.0] — 2026-06-15
