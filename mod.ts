@@ -1,4 +1,4 @@
-import type { PluginContext, Tool, ToolCallResult, ToolContext } from './types.ts';
+import type { PluginContext, Tool, ToolCallResult } from 'cortex/plugins';
 
 const VALID_MERGE_STRATEGIES = ['consensus', 'best', 'sequential'] as const;
 
@@ -93,7 +93,7 @@ const swarmCreateTool: Tool = {
     capabilities: [],
   },
 
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = nowMs();
     try {
       const task = args.task;
@@ -215,7 +215,7 @@ const swarmDelegateTool: Tool = {
     capabilities: [],
   },
 
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = nowMs();
     try {
       const swarmId = args.swarm_id;
@@ -338,7 +338,7 @@ const swarmCoordinateTool: Tool = {
     capabilities: [],
   },
 
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = nowMs();
     try {
       const swarmId = args.swarm_id;
@@ -463,7 +463,7 @@ const swarmStatusTool: Tool = {
     capabilities: [],
   },
 
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = nowMs();
     try {
       const swarmId = args.swarm_id;
@@ -543,7 +543,7 @@ const swarmTerminateTool: Tool = {
     capabilities: [],
   },
 
-  execute: async (args: Record<string, unknown>, _ctx: ToolContext): Promise<ToolCallResult> => {
+  execute: async (args: Record<string, unknown>, _ctx: PluginContext): Promise<ToolCallResult> => {
     const start = nowMs();
     try {
       const swarmId = args.swarm_id;
